@@ -10,6 +10,9 @@ from tkinter import *
 body = Tk()
 body.geometry("360x400")
 body.configure(background="#5C0120")
+body.resizable(width=False, height=False)
+body.title("calculator")
+body.iconbitmap("abaco.ico")
 
 ###################funciones##########################################################
 numeroPantalla = StringVar()
@@ -72,9 +75,9 @@ def realizarOperacion(operacionActual):
 
 ######################pantalla######################################################
 
-input1 = Entry(body, font="Roboto 20", textvariable=numeroPantalla)
+input1 = Entry(body, font="Roboto 20", fg="#5C0120", textvariable=numeroPantalla)
 input1.focus()
-input1.grid(columnspan=4, rowspan=2,padx=20, pady=20)
+input1.grid(columnspan=4, rowspan=2,padx=30, pady=20)
 
 
 #####################fila 1#########################################################
