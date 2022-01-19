@@ -13,21 +13,37 @@ body.configure(background="#5C0120")
 
 ###################funciones##########################################################
 numeroPantalla = StringVar()
+estado = False
+
+
 
 
 
 def botonPresionado ( num ):   #función para mostrar el número presionado en la pantalla de la calculadora.
+    
+    if( estado ):
+       numeroPantalla.set("")
+       retornoEstado()
+
     numeroPantalla.set(numeroPantalla.get() + num)
+   
  
    
    
 def tipoDeOperacion(operacion):
     global operacionActual 
     operacionActual = operacion
-    
 
+def cambioDeEstado():
+    global estado
+    estado = True
+    
+def retornoEstado():
+    global estado
+    estado = False
 
 def realizarOperacion(operacionActual):
+    
     todo = numeroPantalla.get()
     lista = todo.split(operacionActual)
     [ num1, num2 ] = lista
@@ -50,12 +66,16 @@ def realizarOperacion(operacionActual):
     else:
         resultado = int(num1)-int(num2)
         numeroPantalla.set(resultado)
+    cambioDeEstado()
         
 
 
 ######################pantalla######################################################
 
-input = Entry(body, font="Roboto 20", textvariable=numeroPantalla).grid(columnspan=4, rowspan=2,padx=20, pady=20)
+input1 = Entry(body, font="Roboto 20", textvariable=numeroPantalla)
+input1.focus()
+input1.grid(columnspan=4, rowspan=2,padx=20, pady=20)
+
 
 #####################fila 1#########################################################
 
